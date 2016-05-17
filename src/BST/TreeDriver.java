@@ -50,6 +50,7 @@ public class TreeDriver {
 				print += Integer.toString(array[i]) + ", ";
 			}
 		}
+		print = print.substring(0, print.length()-2);
 		return print;
 	}
 }
