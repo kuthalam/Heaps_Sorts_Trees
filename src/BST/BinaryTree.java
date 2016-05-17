@@ -5,14 +5,13 @@ package BST;
 public class BinaryTree {
 	
 	protected Node root; //This keeps track of the root
-	protected Node current; //This keeps track of the node you are on
 	protected BinaryTree left;
 	protected BinaryTree right;
-	protected int value;
 	protected int size;
 	protected int index = 0;
-	protected int[] result = new int[100]; //Contains the postOrder traversal result
-	protected int[] searchResult = new int[100]; //Contains the postOrder traversal result
+	protected int[] postResult = new int[100]; //Contains the postOrder traversal result
+	protected int[] preResult = new int[100]; //Contains the preOrder traversal result
+	protected int[] inResult = new int[100]; //Contains the inOrder traversal result
 	
 	BinaryTree(int startValue) {
 		root = new Node(startValue); //Create and save the root's location
@@ -43,10 +42,8 @@ public class BinaryTree {
 	}
 	
 	public int[] postOrder(Node node) { //LRN traversal
-		//Stack<BinaryTree> stack = new Stack<BinaryTree>();
-		
 		if (size == 0) { //In the case that the Tree effectively does not exist
-			return result;
+			return postResult;
 		}
 		
 		if (node.left != null) {
@@ -55,11 +52,47 @@ public class BinaryTree {
 		if (node.right != null) {
 			postOrder(node.right); //Go to the farthest left of the tree before inserting values in result
 		}
-		
-		//stack.push(this); //Now push the node onto the stack
-		result[index] = node.value;
+	
+		postResult[index] = node.value;
 		index++;
 		//Hence, LRN
-		return result;
+		return postResult;
+	}
+	
+	public int[] preOrder (Node node) { //NLR traversal
+		if (size == 0) { //Watch out for an empty tree
+			return preResult;
+		}
+		
+		preResult[index] = node.value; //First push the node value
+		index++;
+		
+		if (node.left != null) { //Now go through the left subtree
+			preOrder(node.left);
+		}
+		if (node.right != null) { //Now go through the right subtree
+			preOrder(node.right);
+		}
+		
+		return preResult;
+	}
+	
+	public int[] inOrder (Node node) { //NLR traversal
+		if (size == 0) { //Watch out for an empty tree
+			return inResult;
+		}
+		
+		if (node.left != null) {
+			inOrder(node.left);
+		}
+		
+		inResult[index] = node.value;
+		index++;
+		
+		if (node.right != null) {
+			inOrder(node.right);
+		}
+		
+		return inResult;
 	}
 }
