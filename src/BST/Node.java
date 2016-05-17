@@ -2,8 +2,8 @@ package BST;
 
 public class Node {
 
-	protected BinaryTree left;
-	protected BinaryTree right;
+	protected Node left;
+	protected Node right;
 	protected int value;
 	
 	Node(int startVal) {
@@ -22,6 +22,6 @@ public class Node {
 		else if (this.right == null) { //If you cannot go any farther right otherwise
 			return new Node(valToIns);
 		}
-		return new Node(0); //Should be unreachable anyway
+		return new Node(0); //If this node is returned, the previous insert() calls this again
 	}
 }

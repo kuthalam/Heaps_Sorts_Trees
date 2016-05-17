@@ -1,6 +1,6 @@
 package Heaps;
 
-import java.util.PriorityQueue;
+//import java.util.PriorityQueue;
 
 public class MinHeap {
 	private int size;
@@ -106,6 +106,6 @@ public class MinHeap {
 	public void heapSort() {
 		//First make the queue a MaxHeap
 		//Then start the delete & pop operations to sort the queue
-		int[] maxHeap = MaxHeap(); //Turn the queue into a MaxHeap
+		//int[] maxHeap = MaxHeap(); //Turn the queue into a MaxHeap
 	}
 }
